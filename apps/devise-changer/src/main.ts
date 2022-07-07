@@ -4,15 +4,25 @@
  */
 
 import * as express from 'express';
+import 'dotenv/config'
+
+import AppService from './services/AppServices'
+import { router } from './routing/api';
 
 const app = express();
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to devise-changer!' });
+AppService()
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  next();
 });
+
+app.use('/api', router);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
 server.on('error', console.error);
+
