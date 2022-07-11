@@ -26,6 +26,6 @@ export function getAvailiableCurrencies(func) {
             const {symbol} = curr;
             return [...acc, symbol]
         }, [])
-        func(data);        
+        func(data);       
     })
 }
