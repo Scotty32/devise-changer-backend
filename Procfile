@@ -1,1 +1,1 @@
-web: npm run nx serve
+web: npm start
