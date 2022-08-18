@@ -325,8 +325,9 @@ exports.router.get('/forceUpdate', (req, res) => {
 });
 exports.router.get('/rates/:from', (req, res) => {
     const { from } = req.params;
+    console.log(from);
     deviseModel_1.CurrencyModel.findOne({ date: (0, utils_1.formatDate)(Date.now(), 'dd-mm-yyyy'), symbol: from.toUpperCase() }).exec((error, curruency) => {
-        res.json(curruency.rates);
+        res.json(curruency === null || curruency === void 0 ? void 0 : curruency.rates);
     });
 });
 

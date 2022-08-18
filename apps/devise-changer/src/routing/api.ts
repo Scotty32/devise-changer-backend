@@ -23,7 +23,8 @@ router.get('/forceUpdate', (req, res) => {
 
 router.get('/rates/:from', (req, res) => {
     const {from} = req.params
+    console.log(from)
     CurrencyModel.findOne({date : formatDate(Date.now(), 'dd-mm-yyyy'), symbol : from.toUpperCase()}).exec((error, curruency) =>{
-        res.json(curruency.rates)
+        res.json(curruency?.rates)
     })
 })

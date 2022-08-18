@@ -6,7 +6,7 @@
         "node": "16.x"
     },
     "scripts": {
-        "start": "node dist/apps/devise-changer/main",
+        "start": "nx serve",
         "build": "nx build",
         "test": "nx test"
     },
